@@ -353,6 +353,8 @@ impl StateChange {
 
 impl Display for StateChange {
 	fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
+		Csi::write_begin(f)?;
+
 		if let Some(weight) = self.weight {
 			// Somehow, terminals can have characters that are bold _and_ thin
 			// at the same time...?
