@@ -23,6 +23,7 @@ impl<'a> Csi<'a> {
 	pub const FINAL_CHAR: char = 'm';
 	pub const FINAL_STR: &'static str = "m";
 
+	/// Write the beginning of a CSI sequence.
 	pub fn write_begin(w: &mut impl fmt::Write) -> fmt::Result {
 		w.write_str(crate::fe_seq::ESC_STR)?;
 		w.write_str(Self::INTRO_STR)

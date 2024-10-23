@@ -79,6 +79,7 @@ pub enum Weight {
 }
 
 impl Weight {
+	/// Convert `self` into an [`Sgr`].
 	#[inline(always)]
 	pub const fn into_sgr(self) -> Sgr {
 		match self {
@@ -112,6 +113,7 @@ pub enum Underline {
 }
 
 impl Underline {
+	/// Convert `self` into an [`Sgr`].
 	#[inline(always)]
 	pub const fn into_sgr(self) -> Sgr {
 		match self {
@@ -145,6 +147,8 @@ pub enum Color {
 }
 
 impl Color {
+	/// Return an [`Sgr`] to change the foreground color to the one specified by
+	/// `self`.
 	#[inline(always)]
 	pub const fn into_foreground(self) -> Sgr {
 		match self {
@@ -154,6 +158,8 @@ impl Color {
 		}
 	}
 
+	/// Return an [`Sgr`] to change the background color to the one specified by
+	/// `self`.
 	#[inline(always)]
 	pub const fn into_background(self) -> Sgr {
 		match self {
@@ -213,6 +219,7 @@ pub enum Italic {
 }
 
 impl Italic {
+	/// Convert `self` into an [`Sgr`].
 	#[inline(always)]
 	pub const fn into_sgr(self) -> Sgr {
 		match self {
@@ -244,6 +251,7 @@ pub enum Strikethrough {
 }
 
 impl Strikethrough {
+	/// Convert `self` into an [`Sgr`].
 	#[inline(always)]
 	pub const fn into_sgr(self) -> Sgr {
 		match self {
@@ -268,6 +276,8 @@ impl Display for Strikethrough {
 }
 
 /// Graphics setting state change.
+/// 
+/// This structure combines multiple state changes into one escape sequence.
 #[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub struct StateChange {
 	pub weight: Option<Weight>,
@@ -279,6 +289,7 @@ pub struct StateChange {
 }
 
 impl StateChange {
+	/// Create a [`StateChange`] that doesn't change any formatting.
 	#[inline(always)]
 	pub const fn new() -> Self {
 		Self {
@@ -291,6 +302,7 @@ impl StateChange {
 		}
 	}
 
+	/// Set [`Self::weight`].
 	pub const fn with_weight(self, x: Weight) -> Self {
 		Self {
 			weight: Some(x),
@@ -298,6 +310,7 @@ impl StateChange {
 		}
 	}
 
+	/// Set [`Self::italic`].
 	pub const fn with_italic(self, x: Italic) -> Self {
 		Self {
 			italic: Some(x),
@@ -305,6 +318,7 @@ impl StateChange {
 		}
 	}
 
+	/// Set [`Self::underline`].
 	pub const fn with_underline(self, x: Underline) -> Self {
 		Self {
 			underline: Some(x),
@@ -312,6 +326,7 @@ impl StateChange {
 		}
 	}
 
+	/// Set [`Self::strikethrough`].
 	pub const fn with_strikethrough(self, x: Strikethrough) -> Self {
 		Self {
 			strikethrough: Some(x),
@@ -319,6 +334,7 @@ impl StateChange {
 		}
 	}
 
+	/// Set [`Self::foreground`].
 	pub const fn with_foreground(self, x: Color) -> Self {
 		Self {
 			foreground: Some(x),
@@ -326,6 +342,7 @@ impl StateChange {
 		}
 	}
 
+	/// Set [`Self::background`].
 	pub const fn with_background(self, x: Color) -> Self {
 		Self {
 			background: Some(x),

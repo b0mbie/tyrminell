@@ -3,6 +3,9 @@
 //! 
 //! Attempt to conform to
 //! <https://www.ecma-international.org/publications-and-standards/standards/ecma-48/>.
+//! 
+//! Many items in this crate are [`Display`](core::fmt::Display)-able, which
+//! means that you can use them with `print!` and `println!`.
 
 #![cfg_attr(not(feature = "std"), no_std)]
 

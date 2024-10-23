@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [features]
+# Include helpers for terminal formatting.
 helpers = []
+# Enable `FeSeq::write_to`, which uses `std::io`.
 std = []
 default = ["helpers"]
