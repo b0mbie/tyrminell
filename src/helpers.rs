@@ -71,10 +71,11 @@ impl Display for EraseLine {
 }
 
 /// Font weight change.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Weight {
 	Bold,
 	Thin,
+	#[default]
 	Regular,
 }
 
@@ -105,10 +106,11 @@ impl Display for Weight {
 }
 
 /// Underline effect state change.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Underline {
 	Single,
 	Double,
+	#[default]
 	None,
 }
 
@@ -139,8 +141,9 @@ impl Display for Underline {
 }
 
 /// Foreground or background color change.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Color {
+	#[default]
 	Reset,
 	Table(u8),
 	Rgb(u8, u8, u8),
@@ -212,8 +215,9 @@ impl Display for Movement {
 }
 
 /// Italic effect state change.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Italic {
+	#[default]
 	Off,
 	On,
 }
@@ -244,8 +248,9 @@ impl Display for Italic {
 }
 
 /// Strikethrough effect state change.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Strikethrough {
+	#[default]
 	Off,
 	On,
 }
