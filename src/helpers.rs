@@ -330,6 +330,7 @@ impl StateChange {
 	}
 
 	/// Set [`Self::weight`].
+	#[inline(always)]
 	pub const fn with_weight(self, x: Weight) -> Self {
 		Self {
 			weight: Some(x),
@@ -338,6 +339,7 @@ impl StateChange {
 	}
 
 	/// Set [`Self::italic`].
+	#[inline(always)]
 	pub const fn with_italic(self, x: Italic) -> Self {
 		Self {
 			italic: Some(x),
@@ -346,6 +348,7 @@ impl StateChange {
 	}
 
 	/// Set [`Self::underline`].
+	#[inline(always)]
 	pub const fn with_underline(self, x: Underline) -> Self {
 		Self {
 			underline: Some(x),
@@ -354,6 +357,7 @@ impl StateChange {
 	}
 
 	/// Set [`Self::strikethrough`].
+	#[inline(always)]
 	pub const fn with_strikethrough(self, x: Strikethrough) -> Self {
 		Self {
 			strikethrough: Some(x),
@@ -362,6 +366,7 @@ impl StateChange {
 	}
 
 	/// Set [`Self::foreground`].
+	#[inline(always)]
 	pub const fn with_foreground(self, x: Color) -> Self {
 		Self {
 			foreground: Some(x),
@@ -370,6 +375,7 @@ impl StateChange {
 	}
 
 	/// Set [`Self::background`].
+	#[inline(always)]
 	pub const fn with_background(self, x: Color) -> Self {
 		Self {
 			background: Some(x),
