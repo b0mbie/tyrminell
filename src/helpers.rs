@@ -293,6 +293,13 @@ pub struct StateChange {
 	pub background: Option<Color>,
 }
 
+const fn opt_replace_some<T: Copy>(option: Option<T>, value: T) -> Option<T> {
+	match option {
+		Some(..) => Some(value),
+		None => None,
+	}
+}
+
 impl StateChange {
 	/// Create a [`StateChange`] that doesn't change any formatting.
 	#[inline(always)]
@@ -304,6 +311,21 @@ impl StateChange {
 			strikethrough: None,
 			foreground: None,
 			background: None,
+		}
+	}
+
+	/// Create a [`StateChange`] that resets the effects of this one.
+	#[inline(always)]
+	pub const fn resetter(&self) -> Self {
+		Self {
+			weight: opt_replace_some(self.weight, Weight::Regular),
+			italic: opt_replace_some(self.italic, Italic::Off),
+			underline: opt_replace_some(self.underline, Underline::None),
+			strikethrough: opt_replace_some(
+				self.strikethrough, Strikethrough::Off
+			),
+			foreground: opt_replace_some(self.foreground, Color::Reset),
+			background: opt_replace_some(self.background, Color::Reset),
 		}
 	}
 
