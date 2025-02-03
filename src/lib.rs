@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 //! Interact with the terminal to adjust printed text, with minimal heap
 //! allocations.
 //! 

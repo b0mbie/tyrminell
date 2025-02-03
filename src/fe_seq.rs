@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 use super::{
 	byte_wrapper, byte_utf8able
 };
@@ -52,7 +54,7 @@ pub enum FeSeq<'a> {
 	AppProgramCommand(&'a [Printable]),
 }
 
-impl<'a> FeSeq<'a> {
+impl FeSeq<'_> {
 	/// Return the first byte after the escape character that represents this
 	/// sequence.
 	pub fn kind_byte(&self) -> u8 {

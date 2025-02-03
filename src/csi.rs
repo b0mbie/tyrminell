@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 use super::{
 	byte_wrapper, byte_utf8able
 };
@@ -15,7 +17,7 @@ pub struct Csi<'a> {
 	pub final_byte: CsiFinal,
 }
 
-impl<'a> Csi<'a> {
+impl Csi<'_> {
 	pub const INTRO_BYTE: u8 = b'[';
 	pub const INTRO_CHAR: char = '[';
 	pub const INTRO_STR: &'static str = "[";
@@ -30,7 +32,7 @@ impl<'a> Csi<'a> {
 	}
 }
 
-impl<'a> fmt::Display for Csi<'a> {
+impl fmt::Display for Csi<'_> {
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
 		f.write_str(crate::fe_seq::ESC_STR)?;
 		f.write_str(Self::INTRO_STR)?;
